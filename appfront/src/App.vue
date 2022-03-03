@@ -2,8 +2,9 @@
   <div id="nav">
     <router-link to="/">Add Todo</router-link> |
     <router-link to="/todolist">Todo List</router-link>
+
+    <router-view />
   </div>
-  <router-view />
 </template>
 
 <style>

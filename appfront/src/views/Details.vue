@@ -1,6 +1,8 @@
 <template>
-  <h1>This Details</h1>
-  {{ pageNumber }}
+  <div>
+    <h1>This Details</h1>
+    {{ pageNumber }}
+  </div>
 </template>
 
 <script>
