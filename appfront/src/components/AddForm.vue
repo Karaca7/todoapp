@@ -1,22 +1,13 @@
 <template>
   <div class="hello">
-    <!-- <form oninput="sonuc.value=deger.value">
-      <input
-        type="range"
-        name="deger"
-        min="0"
-        max="10"
-        value="2"
-        ref="todoweight"
-      />
-      <output name="sonuc">0</output>
-    </form> -->
     <div>
       <input type="text" name="" id="" />
       <br />
 
       <input type="range" min="1" max="10" step="1" v-model="value" />
       <p style="display: inline">{{ value }}</p>
+      <br />
+      <input type="file" name="" id="" alt="" />
       <br />
 
       <select name="todo" id="">
@@ -40,7 +31,6 @@ export default {
   },
   data() {
     return {
-      hel: "-", //this.$refs.todoweight,
       value: 0,
     };
   },
