@@ -7,14 +7,17 @@ app.get("/getalltodo", (req, res) => {
 });
 
 //Todo :  database bağlanacak ve gelen istekler get ,post ve put olacak.
-app.post("/todoadd/:todo/:weight/:type", (req, res) => {
+app.post("/addtodo/:todo/:weight/:type", (req, res) => {
   // ı will image
+  console.log("post");
+
   let data = {
     todo: req.params.todo,
     weight: req.params.weight,
     type: req.params.type,
   };
-  res.json(data);
+  console.log(data);
+  res.json({ type: 200 });
 });
 //buna ihtiyaç var details yada düzenlemek için
 app.get("/gettodo/:id", (req, res) => {
@@ -22,7 +25,16 @@ app.get("/gettodo/:id", (req, res) => {
 });
 
 // oluşturulan ilan yeniden düzenlene bilir mi ?
-app.put("/todoadd/:todo/:weight/:type");
+app.put("/puttodo/:todo/:weight/:type", (req, res) => {
+  console.log("put");
+  let data = {
+    todo: req.params.todo,
+    weight: req.params.weight,
+    type: req.params.type,
+  };
+  console.log(data);
+  res.json({ type: 200 });
+});
 
 app.listen(5500, () => {
   console.log("server is runing");
