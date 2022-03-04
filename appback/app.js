@@ -1,13 +1,17 @@
 import express from "express";
 import multer from "multer";
+import TodoModdel from "./Model/Todo.js";
+
 const app = express();
 
-app.get("/getalltodo", (req, res) => {
+app.get("/getalltodo", async (req, res) => {
   //all todos will be brought
-  res.send("all todo object list");
+  let data = await TodoModdel.find({});
+  res.json(data);
 });
 
 //Todo :  database bağlanacak ve gelen istekler get ,post ve put olacak.
+
 app.post("/addtodo/:todo/:weight/:type", (req, res) => {
   // ı will image
   console.log("post");
@@ -26,6 +30,7 @@ app.get("/gettodo/:id", (req, res) => {
 });
 
 // oluşturulan ilan yeniden düzenlene bilir mi ?
+
 app.put("/puttodo/:todo/:weight/:type", (req, res) => {
   console.log("put");
   let data = {
@@ -47,21 +52,29 @@ const filestroageengine = multer.diskStorage({
 });
 const upload = multer({ storage: filestroageengine });
 
+//tododata  weight todotype nowdate  lastdate todoimg:
+
 app.post(
-  "/addtodo2/:todo/:weight/:type/",
+  "/addtodo2/:todo/:weight/:todotype/:nowdate/:lastdate/:isdone/",
   upload.single("media"),
-  (req, res) => {
+  async (req, res) => {
     //
+    console.log(req.params.todo);
 
+    // console.log(data);
     console.log("post");
-
-    let data = {
-      todo: req.params.todo,
+    console.log(req.params.nowdate);
+    console.log(req.params.lastdate);
+    let todo = await TodoModdel.create({
+      tododata: req.params.todo,
       weight: req.params.weight,
-      type: req.params.type,
-      img: req.file,
-    };
-    console.log(data);
+      todotype: req.params.todotype,
+      nowdate: new Date(1449092965474),
+      lastdate: new Date(1449092965745),
+      todoimg: req.file.filename,
+      isDone: req.params.isdone,
+    });
+    await todo.save();
 
     res.json({ type: 200 });
   }

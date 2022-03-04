@@ -1,42 +1,47 @@
-import { Sequelize } from "sequelize";
+import mongoose from "mongoose";
 
-import { sequelize } from "./db.js";
+mongoose.connect("mongodb://localhost/database1");
 
-const Todo = sequelize.define("todo", {
-  todo_id: {
-    type: Sequelize.INTEGER,
-    autoIncrement: true,
-    allowNull: false,
-    primaryKey: true,
-  },
-
+const TodoSchema = new mongoose.Schema({
   tododata: {
-    type: Sequelize.STRING(100),
-    allowNull: false,
+    type: String,
+    min: 1,
+    max: 100,
+    required: true, // ı will  fix
   },
-  weight: {
-    type: Sequelize.INTEGER(3),
-    allowNull: false,
-  },
-  isDone: {
-    type: Sequelize.BOOLEAN,
-    defaultValue: false,
-    allowNull: true,
-  },
-  createdate: {
-    type: Sequelize.DATE,
-    allowNull: false,
-  },
-  finsheddate: {
-    type: Sequelize.DATE,
+  weight: { type: Number, max: 3, min: 1, required: true }, //,
 
-    allowNull: false,
+  todotype: { type: String, required: true }, //
+
+  nowdate: {
+    type: Date,
+    required: false, // ı will  fix
   },
-  todoimg: {
-    type: Sequelize.TEXT,
-    allowNull: true,
+  lastdate: {
+    type: Date,
+    required: false, // ı will  fix
   },
+  todoimg: { type: String },
+  isDone: { type: Boolean, default: false },
 });
 
-module.exports = Todo;
+const TodoModdel = mongoose.model("Todo", TodoSchema);
+export default TodoModdel;
+
 //-kolon bilgileri. todo(100 chart) ,weight (düşük-orta-yüksek),date, tamamlandı,img
+
+//tododata  weight todotype nowdate  lastdate todoimg:
+
+/*
+
+  nowdate: {
+    type: Date,
+    required: false, // ı will  fix
+  },
+
+  lastdate: {
+    type: Date,
+    required: false, // ı will  fix
+  },
+  todoimg: { type: String },
+*/
