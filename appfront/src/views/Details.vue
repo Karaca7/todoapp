@@ -2,6 +2,7 @@
   <div>
     <h1>This Details</h1>
     {{ pageNumber }}
+    <a href="#/todolist">listeye geri dön</a>
   </div>
 </template>
 
