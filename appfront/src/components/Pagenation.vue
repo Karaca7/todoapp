@@ -70,18 +70,18 @@ export default {
       // console.log(number);
       this.nownuber = number;
       this.nowpagelist = this.pagelsit[number - 1];
-      this.pagesize = Math.floor(this.datas.length / 2) + 1;
+      this.pagesize = Math.floor(this.datas.length / 5) + 1;
     },
     createPages() {
       let range1 = 0;
-      let range2 = 2;
+      let range2 = 5;
 
       let dlist = this.datas;
-      for (let number = 0; number <= Math.floor(dlist.length / 2); number++) {
+      for (let number = 0; number <= Math.floor(dlist.length / 5); number++) {
         // console.log(dlist.slice(range1, range2));
         this.pagelsit.push(dlist.slice(range1, range2));
         range1 = range2;
-        range2 += 2;
+        range2 += 5;
       }
     },
   },

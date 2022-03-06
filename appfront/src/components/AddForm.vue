@@ -1,6 +1,7 @@
 <template>
   <div class="hello">
     <div>
+      {{ verificationMessage }}<br />
       <input type="text" name="" id="" v-model="tododata" />
       <br />
 
@@ -35,9 +36,7 @@ import axios from "axios";
 import FormData from "form-data";
 export default {
   name: "AddForm",
-  props: {
-    msg: String,
-  },
+
   data() {
     return {
       tododata: null,
@@ -47,6 +46,8 @@ export default {
       //
       alltodo: null,
       selectedFile: null,
+
+      verificationMessage: null,
     };
   },
   methods: {
@@ -62,16 +63,43 @@ export default {
       let ndate = new Date(Date.now());
       let tdate = new Date(this.tdate);
 
-      form.append("tododata", tdata);
       form.append("weight", timpor);
       form.append("todotype", ttype);
       form.append("nowdate", ndate);
       form.append("lastdate", tdate);
       form.append("isdone", false);
-      form.append("media", this.selectedFile);
 
-      let addtada = await axios.post(`http://localhost:5500/addtodos/`, form);
-      this.alltodo = addtada;
+      //verification işlemini fazla uzatmak istemiyorum. kodu revive yapmaya vaktim kalırsa düzenlerim
+      if (tdata != null && tdata != "") {
+        form.append("tododata", tdata);
+        if (tdate >= ndate) {
+          if (this.selectedFile != null) {
+            if (
+              this.selectedFile.type == "image/png" ||
+              this.selectedFile.type == "image/jpg" ||
+              this.selectedFile.type == "image/jpeg"
+            ) {
+              this.verificationMessage = null;
+
+              form.append("media", this.selectedFile);
+              await axios.post(`http://localhost:5500/addtodos/`, form);
+              this.alltodo = "Kayıt başarılı !";
+            } else {
+              this.verificationMessage =
+                "Lütfen bir png/jpg/jpeg formatında bir dosya seçiniz";
+            }
+          } else {
+            form.append("media", null);
+            await axios.post(`http://localhost:5500/addtodos/`, form);
+            this.alltodo = "Kayıt başarılı !";
+          }
+        } else {
+          this.verificationMessage =
+            "Lütfen bu günün tarihinden büyük  veya eşit bir tarih giriniz";
+        }
+      } else {
+        this.verificationMessage = "Lütfen bir başlık giriniz";
+      }
     },
   },
 };

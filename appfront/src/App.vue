@@ -1,7 +1,8 @@
 <template>
   <div id="nav">
     <router-link to="/">Add Todo</router-link> |
-    <router-link to="/todolist">Todo List</router-link>
+    <router-link to="/todolist">Todo List</router-link> |
+    <router-link to="/findtodo">Find Todo</router-link>
 
     <router-view />
   </div>

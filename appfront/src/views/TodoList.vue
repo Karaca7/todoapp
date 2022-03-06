@@ -26,7 +26,6 @@ export default {
   methods: {
     async getalltodo() {
       let alltodo = await axios.get("http://localhost:5500/getalltodo");
-
       this.dataList = this.sorter(alltodo);
 
       //callback olarakta çağırabilridim //fakat bob amca clean code kurallarında:  bir fonksiyon sadece tanımlanan adı dışında iş yapamaz der

@@ -24,6 +24,12 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "details" */ "../views/Details.vue"),
   },
+
+  {
+    path: "/findtodo",
+    name: "findtodo",
+    component: () => import("../views/Findtodo.vue"),
+  },
 ];
 
 const router = createRouter({
