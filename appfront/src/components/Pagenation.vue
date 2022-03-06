@@ -5,7 +5,11 @@
 
     <!--  -->
     <ul v-for="todo in nowpagelist" :key="todo">
-      <li>{{ todo.tododata }}|| {{ todo.weight }} | {{ todo.todotype }}</li>
+      <li :ref="todo._id">
+        {{ todo.tododata }}|| {{ todo.weight }} | {{ todo.todotype }}
+        <button @click="todoremove(todo._id)">Sil</button>
+        <button @click="tododone(todo._id)">Tamam</button>
+      </li>
     </ul>
 
     <!-- page number -->
@@ -26,14 +30,13 @@
 </template>
 
 <script>
-// import axios from "axios";
+import axios from "axios";
 export default {
   name: "Pagenation",
   props: ["datas"],
 
   data() {
     return {
-      // datas: [],
       pagelsit: [],
       nowpagelist: [],
       pagesize: 0,
@@ -42,23 +45,38 @@ export default {
   },
 
   methods: {
+    async todoremove(todoid) {
+      await axios.post(`http://localhost:5500/removetodo/${todoid}`);
+      this.elemetremover(todoid);
+    },
+    async tododone(todoid) {
+      await axios.post(`http://localhost:5500/donetodo/${todoid}`);
+      this.elemetremover(todoid);
+    },
+
+    elemetremover(todoid) {
+      for (let i in this.pagelsit) {
+        for (let z in this.pagelsit[i]) {
+          let data = this.pagelsit[i][z];
+          if (data["_id"] == todoid) {
+            this.pagelsit[i].splice(z, 1);
+          }
+        }
+      }
+    },
     getpage(number) {
-      console.log(number);
+      // console.log(number);
       this.nownuber = number;
       this.nowpagelist = this.pagelsit[number - 1];
       this.pagesize = Math.floor(this.datas.length / 2) + 1;
     },
-    getdatas() {
+    createPages() {
       let range1 = 0;
       let range2 = 2;
 
       let dlist = this.datas;
-      for (
-        let number = 0;
-        number <= Math.floor(dlist.length / 2); //işlem 2
-        number++
-      ) {
-        console.log(dlist.slice(range1, range2));
+      for (let number = 0; number <= Math.floor(dlist.length / 2); number++) {
+        // console.log(dlist.slice(range1, range2));
         this.pagelsit.push(dlist.slice(range1, range2));
         range1 = range2;
         range2 += 2;

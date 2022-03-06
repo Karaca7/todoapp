@@ -1,8 +1,15 @@
 import express from "express";
 import multer from "multer";
+import cors from "cors";
+import bodyParser from "body-parser";
+
 import TodoModdel from "./Model/Todo.js";
 
 const app = express();
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
+app.use(cors());
 
 app.get("/getalltodo", async (req, res) => {
   //all todos will be brought
@@ -10,37 +17,37 @@ app.get("/getalltodo", async (req, res) => {
   res.json(data);
 });
 
+app.post("/removetodo/:id", async (req, res) => {
+  let status = { value: 200 };
+  let id = String(req.params.id);
+  await TodoModdel.findByIdAndRemove({ _id: id })
+    .exec()
+    .catch((err) => {
+      console.log("document  yok");
+      status.value = 404;
+    });
+
+  res.json(status);
+});
+
+app.post("/donetodo/:id", async (req, res) => {
+  let status = { value: 200 };
+  let id = String(req.params.id);
+  let data = await TodoModdel.findById({ _id: id })
+    .exec()
+    .catch((err) => {
+      console.log("document  yok");
+      status.value = 404;
+    });
+  data.isDone = true;
+  data.save();
+
+  console.log(data);
+
+  res.json(data);
+});
+
 //Todo :  database bağlanacak ve gelen istekler get ,post ve put olacak.
-
-app.post("/addtodo/:todo/:weight/:type", (req, res) => {
-  // ı will image
-  console.log("post");
-
-  let data = {
-    todo: req.params.todo,
-    weight: req.params.weight,
-    type: req.params.type,
-  };
-  console.log(data);
-  res.json({ type: 200 });
-});
-//buna ihtiyaç var details yada düzenlemek için
-app.get("/gettodo/:id", (req, res) => {
-  res.json({ "todo id": req.params.id });
-});
-
-// oluşturulan ilan yeniden düzenlene bilir mi ?
-
-app.put("/puttodo/:todo/:weight/:type", (req, res) => {
-  console.log("put");
-  let data = {
-    todo: req.params.todo,
-    weight: req.params.weight,
-    type: req.params.type,
-  };
-  console.log(data);
-  res.json({ type: 200 });
-});
 
 const filestroageengine = multer.diskStorage({
   destination: (req, file, cursor) => {
@@ -52,33 +59,26 @@ const filestroageengine = multer.diskStorage({
 });
 const upload = multer({ storage: filestroageengine });
 
-//tododata  weight todotype nowdate  lastdate todoimg:
-
-app.post(
-  "/addtodo2/:todo/:weight/:todotype/:nowdate/:lastdate/:isdone/",
-  upload.single("media"),
-  async (req, res) => {
-    //
-    console.log(req.params.todo);
-
-    // console.log(data);
-    console.log("post");
-    console.log(req.params.nowdate);
-    console.log(req.params.lastdate);
-    let todo = await TodoModdel.create({
-      tododata: req.params.todo,
-      weight: req.params.weight,
-      todotype: req.params.todotype,
-      nowdate: new Date(1449092965474),
-      lastdate: new Date(1449092965745),
-      todoimg: req.file.filename,
-      isDone: req.params.isdone,
-    });
-    await todo.save();
-
-    res.json({ type: 200 });
+app.post("/addtodos", upload.single("media"), async (req, res) => {
+  try {
+    timage = req.file.filename;
+  } catch {
+    timage = null;
   }
-);
+
+  let todo = await TodoModdel.create({
+    tododata: req.body.tododata,
+    weight: req.body.weight,
+    todotype: req.body.todotype,
+    nowdate: req.body.nowdate,
+    lastdate: req.body.lastdate,
+    isdone: req.body.isdone,
+    timage: timage,
+  });
+  await todo.save();
+
+  res.json({ status: 200 });
+});
 
 app.listen(5500, () => {
   console.log("server is runing");

@@ -20,8 +20,12 @@ Düzenleme - Düzenleme sayfası ve modalı açılıp burada ekleme kısmında y
 Tamamlandı. Aktif olan todo tamamlandı işaretlenebilir. Tersi olamaz
 
 Projede Frontend tarafında Vue, Backend tarafında ise Nodejs kullanılması gerekiyor.
+
+!
 API istekleri için Axios kulllanılmalı ve istekleri göndermeden gerekli gördüğünüz alanlarda doğrulama yapılmalı. Örneğin resim varsa uzantısı png veya jpeg olmalı max todo uzunluğu 100 karakter olmalı gibi
 Veritabanı olarak mongo,mysql veya postgresql kullanabilirsiniz.
+!
+
 Uygulama geliştirmeye başlamadan önce github veya benzeri sistemlerde public bir repo oluşturup başından sonuna kadar bu repo kullanılmalı ve birden fazla commit olmalı.( Küçük commitler olmasa da bölüm bölüm olabilir. Örneğin listeleme sayfası oluşturuldu, ekleme işlemleri yapıldı, backend işlemleri bitti gibi)  
 Uygulamada Vue ile oluşturulacağı için componentleri aktif şekilde kullanmaya özen gösterilmeli. Örneğin listeleme yapılırken her bir satır verileri bir modele atanmalı ve model üzerinden işlem yapılmalı veya filtreleme kısmı bir component olmalı gibi
 
