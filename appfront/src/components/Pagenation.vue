@@ -6,7 +6,9 @@
     <!--  -->
     <ul v-for="todo in nowpagelist" :key="todo">
       <li :ref="todo._id">
-        {{ todo.tododata }}|| {{ todo.weight }} | {{ todo.todotype }}
+        Görev: {{ todo.tododata }}|| Önem: {{ todo.weight }} | Kategori:{{
+          todo.todotype
+        }}
         <button @click="todoremove(todo._id)">Sil</button>
         <button @click="tododone(todo._id)">Tamam</button>
       </li>

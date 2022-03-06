@@ -60,12 +60,6 @@ const filestroageengine = multer.diskStorage({
 const upload = multer({ storage: filestroageengine });
 
 app.post("/addtodos", upload.single("media"), async (req, res) => {
-  try {
-    timage = req.file.filename;
-  } catch {
-    timage = null;
-  }
-
   let todo = await TodoModdel.create({
     tododata: req.body.tododata,
     weight: req.body.weight,
@@ -73,8 +67,16 @@ app.post("/addtodos", upload.single("media"), async (req, res) => {
     nowdate: req.body.nowdate,
     lastdate: req.body.lastdate,
     isdone: req.body.isdone,
-    timage: timage,
   });
+  try {
+    let timage = req.file.filename;
+
+    todo.timage = timage;
+  } catch {
+    let timage = null;
+    todo.timage = timage;
+  }
+
   await todo.save();
 
   res.json({ status: 200 });
