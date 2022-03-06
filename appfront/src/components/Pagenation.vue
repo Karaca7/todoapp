@@ -2,14 +2,13 @@
   <div>
     <h1>pagenation</h1>
     <!-- page item -->
-    <ul v-for="item in nowpagelist" :key="item">
-      <li>
-        {{ item.id }} || {{ item.todo }}
-        <a :href="'#/details/' + item.id">detay</a>
-        <button @click="todo">yapıldı</button>
-        <a :href="'#/details/' + item.id">sil</a>
-      </li>
+
+    <!--  -->
+    <ul v-for="todo in nowpagelist" :key="todo">
+      <li>{{ todo.tododata }}|| {{ todo.weight }} | {{ todo.todotype }}</li>
     </ul>
+
+    <!-- page number -->
     <ul
       v-for="pagenumber in pagesize"
       :key="pagenumber"
@@ -21,50 +20,50 @@
         </button>
       </span>
     </ul>
+    <!--  -->
+    <hr />
   </div>
 </template>
 
 <script>
+// import axios from "axios";
 export default {
   name: "Pagenation",
   props: ["datas"],
+
   data() {
     return {
+      // datas: [],
       pagelsit: [],
       nowpagelist: [],
-      pagesize: Math.floor(this.datas.length / 2) + 3,
-      nownuber: 1,
+      pagesize: 0,
+      nownuber: 0,
     };
   },
 
   methods: {
     getpage(number) {
+      console.log(number);
       this.nownuber = number;
       this.nowpagelist = this.pagelsit[number - 1];
+      this.pagesize = Math.floor(this.datas.length / 2) + 1;
     },
     getdatas() {
       let range1 = 0;
       let range2 = 2;
 
       let dlist = this.datas;
-      console.log(this.datas.length);
       for (
         let number = 0;
-        number <= Math.floor(dlist.length / 2) + 2;
+        number <= Math.floor(dlist.length / 2); //işlem 2
         number++
       ) {
-        range1 += 1;
-        range2 += 1;
-
-        console.log(dlist.slice(range1 - 1, range2 - 1));
-        this.pagelsit.push(dlist.slice(range1 - 1, range2 - 1));
+        console.log(dlist.slice(range1, range2));
+        this.pagelsit.push(dlist.slice(range1, range2));
+        range1 = range2;
+        range2 += 2;
       }
     },
-  },
-
-  mounted() {
-    this.getdatas();
-    this.getpage(1);
   },
 };
 </script>

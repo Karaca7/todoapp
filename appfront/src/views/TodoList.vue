@@ -6,12 +6,14 @@
 
     <br />
 
-    <Pagenation :datas="datalist" />
+    <Pagenation :datas="datass" ref="pagen" />
   </div>
 </template>
 
 <script>
 import Pagenation from "../components/Pagenation.vue";
+import axios from "axios";
+
 export default {
   name: "todolist",
   data() {
@@ -25,14 +27,30 @@ export default {
         { id: 6, todo: "deneme2", type: "Ödemeler", weight: 1 },
         { id: 7, todo: "deneme2", type: "Ödemeler", weight: 10 },
       ],
+      datass: [],
     };
   },
+
   methods: {
-    todo() {
-      console.log("yapıldı!!!!");
+    async getalltodo() {
+      let alltodo = await axios.get("http://localhost:5500/getalltodo");
+
+      for (let index in alltodo["data"]) {
+        this.datass.push(alltodo.data[index]);
+      }
+      console.log("getçi");
+      console.log(alltodo["data"]);
+      //callback olarakta çağırabilridim //fakat bob amca clean code kurallarında:  bir fonksiyon sadece tanımlanan adı dışında iş yapamaz der
+      // await this.$refs.pagen.getdatas();
+      //await this.$refs.pagen.getpage(1);
     },
   },
 
+  async mounted() {
+    await this.getalltodo();
+    await this.$refs.pagen.getdatas();
+    await this.$refs.pagen.getpage(1);
+  },
   components: { Pagenation: Pagenation },
 };
 </script>
