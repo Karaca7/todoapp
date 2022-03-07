@@ -21,7 +21,7 @@ const TodoSchema = new mongoose.Schema({
     type: Date,
     required: false, // ı will  fix
   },
-  todoimg: { type: String },
+  todoimg: String,
   isDone: { type: Boolean, default: false },
 });
 

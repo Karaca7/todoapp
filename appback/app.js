@@ -6,6 +6,8 @@ import bodyParser from "body-parser";
 import TodoModdel from "./Model/Todo.js";
 
 const app = express();
+
+app.use("/media", express.static("media"));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
@@ -70,15 +72,13 @@ app.post("/addtodos", upload.single("media"), async (req, res) => {
   });
   try {
     let timage = req.file.filename;
-
-    todo.timage = timage;
+    todo.todoimg = `http://localhost:5500/media/${timage}`;
   } catch {
     let timage = null;
-    todo.timage = timage;
+    todo.todoimg = timage;
+    console.log("bura2");
   }
-
   await todo.save();
-
   res.json({ status: 200 });
 });
 

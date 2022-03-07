@@ -9,6 +9,7 @@
         Görev: {{ todo.tododata }}|| Önem: {{ todo.weight }} | Kategori:{{
           todo.todotype
         }}
+        <img v-bind:src="todo.todoimg" />
         <button @click="todoremove(todo._id)">Sil</button>
         <button @click="tododone(todo._id)">Tamam</button>
       </li>
@@ -103,5 +104,9 @@ li {
 }
 a {
   color: #42b983;
+}
+img {
+  width: 10%;
+  height: 10%;
 }
 </style>
