@@ -12,11 +12,11 @@
       </select>
       <br />
       <select name="todo" id="" v-model="todotype">
-        <option value="1">İş</option>
-        <option value="2">Okul</option>
-        <option value="3">Aile</option>
-        <option value="4">Ödemeler</option>
-        <option value="5">Kişisel Gelişim</option>
+        <option value="İş">İş</option>
+        <option value="Okul">Okul</option>
+        <option value="Aile">Aile</option>
+        <option value="Ödemeler">Ödemeler</option>
+        <option value="Kişisel Gelişim">Kişisel Gelişim</option>
       </select>
       <br />
       <input type="date" name="" id="" v-model="tdate" />
@@ -24,8 +24,9 @@
       <input type="file" name="" id="" @change="onFileChanged" />
 
       <hr />
-      <button @click="addTodo">add</button>
-
+      <span v-if="addkey === 'true'">
+        <button @click="addTodo">add</button>
+      </span>
       {{ alltodo }}
     </div>
   </div>
@@ -36,23 +37,26 @@ import axios from "axios";
 import FormData from "form-data";
 export default {
   name: "AddForm",
-
+  props: ["addkey"],
   data() {
     return {
       tododata: null,
       todoimportance: 1,
-      todotype: 1,
+      todotype: "İş",
       tdate: null,
       //
       alltodo: null,
       selectedFile: null,
 
       verificationMessage: null,
+      tempimg: null,
     };
   },
   methods: {
     onFileChanged(event) {
       this.selectedFile = event.target.files[0];
+      //console.log(this.selectedFile);
+      this.tempimg = event.target.files[0];
     },
     async addTodo() {
       let form = new FormData();
@@ -69,7 +73,7 @@ export default {
       form.append("lastdate", tdate);
       form.append("isdone", false);
 
-      //verification işlemini fazla uzatmak istemiyorum. kodu revive yapmaya vaktim kalırsa düzenlerim
+      //validation işlemini fazla uzatmak istemiyorum. kodu revive yapmaya vaktim kalırsa düzenlerim
       if (tdata != null && tdata != "") {
         form.append("tododata", tdata);
         let tdatestr = new Date(
@@ -93,6 +97,7 @@ export default {
               this.verificationMessage = null;
 
               form.append("media", this.selectedFile);
+
               await axios.post(`http://localhost:5500/addtodos/`, form);
               this.alltodo = "Kayıt başarılı !";
             } else {

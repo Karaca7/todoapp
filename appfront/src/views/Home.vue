@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <img alt="Vue logo" src="../assets/logo.png" />
-    <AddForm />
+    <AddForm addkey="true" />
   </div>
 </template>
 

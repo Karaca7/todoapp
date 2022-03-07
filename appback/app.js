@@ -83,6 +83,45 @@ app.post("/addtodos", upload.single("media"), async (req, res) => {
   res.json({ status: 200 });
 });
 
+app.get("/gettodo/:id", async (req, res) => {
+  let todoId = req.params.id;
+  let todo = await TodoModdel.findById(todoId);
+  res.json(todo);
+});
+
+app.post("/puttodo", upload.single("media"), async (req, res) => {
+  let status = { value: 200 };
+  let idtodo = req.body.todoidasdsad;
+
+  let data = await TodoModdel.findById({ _id: idtodo })
+    .exec()
+    .catch((err) => {
+      console.log("document  yok");
+      status.value = 404;
+    });
+  data.tododata = req.body.tododata[0];
+  data.weight = req.body.weight;
+  data.nowdate = req.body.nowdate;
+  data.lastdate = req.body.lastdate;
+  data.todotype = req.body.todotype;
+
+  try {
+    let timage = req.file.filename;
+    console.log(typeof timage);
+    let reqimg = `http://localhost:5500/media/${timage}`;
+
+    data.todoimg = reqimg;
+  } catch {
+    let timage = null;
+
+    data.todoimg = timage;
+  }
+
+  await data.save();
+  //console.log(req.body);
+  res.json({ status: 200 });
+});
+
 app.listen(5500, () => {
   console.log("server is runing");
 });

@@ -6,11 +6,15 @@
     <!--  -->
     <ul v-for="todo in nowpagelist" :key="todo">
       <li :ref="todo._id">
+        <span v-if="todo.todoimg"><img v-bind:src="todo.todoimg" /></span>
+        <span v-else> No image ||</span>
+
         Görev: {{ todo.tododata }}|| Önem: {{ todo.weight }} | Kategori:{{
           todo.todotype
         }}
-        <img v-bind:src="todo.todoimg" />
+
         <button @click="todoremove(todo._id)">Sil</button>
+        <button><a :href="'#/details/' + todo._id">Düzenle</a></button>
         <button @click="tododone(todo._id)">Tamam</button>
       </li>
     </ul>
