@@ -122,6 +122,12 @@ app.post("/puttodo", upload.single("media"), async (req, res) => {
   res.json({ status: 200 });
 });
 
+app.get("/getalltodo", async (req, res) => {
+  let alltodo = await TodoModdel.find({});
+
+  res.json(alltodo);
+});
+
 app.listen(5500, () => {
   console.log("server is runing");
 });

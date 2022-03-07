@@ -95,7 +95,7 @@ export default {
               this.$refs.detailform.tempimg.type == "image/jpeg"
             ) {
               this.verificationMessage2 = null;
-              console.log("bura", this.$refs.detailform.tempimg);
+              //console.log("bura", this.$refs.detailform.tempimg);
               form.append("media", this.$refs.detailform.tempimg);
               //this.tempimg = this.$refs.detailform.tempimg;
               await axios.post(`http://localhost:5500/puttodo/`, form);

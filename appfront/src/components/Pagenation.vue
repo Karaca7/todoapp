@@ -12,10 +12,17 @@
         Görev: {{ todo.tododata }}|| Önem: {{ todo.weight }} | Kategori:{{
           todo.todotype
         }}
+        || Son Gün:{{ dateconvert(todo.lastdate) }} ||
 
-        <button @click="todoremove(todo._id)">Sil</button>
-        <button><a :href="'#/details/' + todo._id">Düzenle</a></button>
-        <button @click="tododone(todo._id)">Tamam</button>
+        <span v-if="mode !== true">
+          <button @click="todoremove(todo._id)">Sil</button>
+          <button><a :href="'#/details/' + todo._id">Düzenle</a></button>
+          <button @click="tododone(todo._id)">Tamam</button>
+        </span>
+        <span v-if="mode === true">
+          <p v-if="todo.isDone">Aktif Görev</p>
+          <p v-else>Tamamlanmış Görev</p>
+        </span>
       </li>
     </ul>
 
@@ -38,9 +45,11 @@
 
 <script>
 import axios from "axios";
+import moment from "moment";
+
 export default {
   name: "Pagenation",
-  props: ["datas"],
+  props: ["datas", "mode", "ortherdata"],
 
   data() {
     return {
@@ -48,10 +57,15 @@ export default {
       nowpagelist: [],
       pagesize: 0,
       nownuber: 0,
+      sa: this.ortherdata,
+      //resulttempdata: null,
     };
   },
 
   methods: {
+    dateconvert(date) {
+      return moment(date).format("YYYY-MM-DD");
+    },
     async todoremove(todoid) {
       await axios.post(`http://localhost:5500/removetodo/${todoid}`);
       this.elemetremover(todoid);
@@ -87,6 +101,23 @@ export default {
         this.pagelsit.push(dlist.slice(range1, range2));
         range1 = range2;
         range2 += 5;
+      }
+    },
+  },
+  watch: {
+    ortherdata(newdata, olddata) {
+      // console.log(newdata, olddata);
+      console.log(newdata.length);
+
+      if (newdata.length == undefined) {
+        console.log("buraa2");
+        this.nowpagelist = [newdata];
+      }
+      if (newdata.length > 1) {
+        console.log("buraa");
+        console.log(newdata.length);
+
+        this.nowpagelist = newdata;
       }
     },
   },

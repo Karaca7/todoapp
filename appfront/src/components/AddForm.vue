@@ -82,9 +82,9 @@ export default {
         let ndatestr = new Date(
           `${ndate.getUTCFullYear()}${ndate.getMonth()}${ndate.getDay()}`
         );
-        console.log(tdatestr);
-        console.log(tdatestr > ndatestr);
-        console.log(ndatestr);
+        // console.log(tdatestr);
+        // console.log(tdatestr > ndatestr);
+        // console.log(ndatestr);
 
         if (ndatestr >= tdatestr) {
           this.verificationMessage = null;

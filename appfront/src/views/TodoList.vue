@@ -6,7 +6,7 @@
 
     <br />
 
-    <Pagenation :datas="dataList" ref="pagen" />
+    <pagenation-1 :datas="dataList" ref="pagen" />
   </div>
 </template>
 
@@ -53,6 +53,6 @@ export default {
     await this.$refs.pagen.createPages();
     await this.$refs.pagen.getpage(1);
   },
-  components: { Pagenation: Pagenation },
+  components: { Pagenation1: Pagenation },
 };
 </script>
