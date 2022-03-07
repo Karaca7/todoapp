@@ -4,8 +4,6 @@ TODO Özellikleri
 
 Bunların değerleri ise aktif ve tamamlandı şeklinde olacak.Tamamlanan bir todo tekrardan aktif edilemeyecek.
 
-1- Kullanıcı todo ekleme sayfası olacak. Bu sayfada kullanıcı kategori seçebilecek ( 5 tane kategori olması yeterlidir. Bunlar size kalmış. Örn Genel,İngilizce Kursu,Faturalar vs) . Ayrıca kullanıcı resim de ekleyebilecek. Sonra listelerken bunları eğer varsa thumbnail gösterecek . (Küçük resimler),
-
 2- Listeleme sayfası olacak. Burada todo bilgileri yer alacak. Ekleme tarihi, todo, kategori,durum,varsa resim,işlemler( düzenleme, silme ve durum değiştirme) --yapıldı
 4- Filtreleme de olacak. Bu alanlar başlangıç-bitiş tarihi,tamamlanma durumu(aktif-tamamlandı), 1. maddedeki kategoriler ve önem durumu olmak üzere 4 filtre alanı olacak.
 

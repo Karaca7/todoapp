@@ -13,9 +13,10 @@ app.use(bodyParser.json());
 
 app.use(cors());
 
-app.get("/getalltodo", async (req, res) => {
+app.get("/isdonetodo", async (req, res) => {
   //all todos will be brought
-  let data = await TodoModdel.find({});
+
+  let data = await TodoModdel.find({ isDone: false });
   res.json(data);
 });
 

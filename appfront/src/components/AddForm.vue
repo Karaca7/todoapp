@@ -72,7 +72,18 @@ export default {
       //verification işlemini fazla uzatmak istemiyorum. kodu revive yapmaya vaktim kalırsa düzenlerim
       if (tdata != null && tdata != "") {
         form.append("tododata", tdata);
-        if (tdate >= ndate) {
+        let tdatestr = new Date(
+          `${tdate.getUTCFullYear()}${tdate.getMonth()}${tdate.getDay()}`
+        );
+        let ndatestr = new Date(
+          `${ndate.getUTCFullYear()}${ndate.getMonth()}${ndate.getDay()}`
+        );
+        console.log(tdatestr);
+        console.log(tdatestr > ndatestr);
+        console.log(ndatestr);
+
+        if (ndatestr >= tdatestr) {
+          this.verificationMessage = null;
           if (this.selectedFile != null) {
             if (
               this.selectedFile.type == "image/png" ||

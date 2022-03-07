@@ -108,5 +108,6 @@ a {
 img {
   width: 10%;
   height: 10%;
+  border-radius: 100%;
 }
 </style>
