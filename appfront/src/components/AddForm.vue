@@ -94,11 +94,12 @@ export default {
         let ndatestr = new Date(
           `${ndate.getUTCFullYear()}${ndate.getMonth()}${ndate.getDay()}`
         );
-        // console.log(tdatestr);
-        // console.log(tdatestr > ndatestr);
-        // console.log(ndatestr);
+        console.log(tdatestr);
+        console.log(tdatestr >= ndatestr);
+        console.log(ndatestr);
+        console.log(typeof tdatestr, typeof ndatestr);
 
-        if (ndatestr >= tdatestr) {
+        if (tdatestr >= ndatestr) {
           this.verificationMessage = null;
           if (this.selectedFile != null) {
             if (
