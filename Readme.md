@@ -7,9 +7,9 @@ search features: search by name and search by date are available.
 delete: you can delete a todo that you have completed.
 edit: you can re-edit an incorrectly created todo.
 
-# Deployment note:
+# Deployment note
 
-    - It does not commit to database and media . These must be created by you.
+    - It does not commit to database . These must be created by you. (Media,committed for Prepared Data)
 
         + For the media folder: -> cd appback -> mkdir media
 
@@ -17,11 +17,21 @@ edit: you can re-edit an incorrectly created todo.
 
             +For create different database: appback ->Model ->Todo.js ->mongoose.connect(<host>/<new db Name>)
 
+# To Run With Prepared Data
+
+- Create database named database1.
+- Create a foo collection.
+- Run the app (appback -appfront) and add new data and close
+- Go inside mongodbTodosCollection folder
+- Run" mongoimport --jsonArray --db database1 --collection todos --file todos.json "
+
+- Note: images have already been added, database images in .media folder
+
 # For Future Versions
 
 - For future versions: user creation and user operations.
-- Fixed better validation processes.
-- Css.
+- Fix better validation processes.
+- Improving connections between components
 
 ## Project setup
 
