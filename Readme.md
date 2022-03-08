@@ -7,6 +7,16 @@ search features: search by name and search by date are available.
 delete: you can delete a todo that you have completed.
 edit: you can re-edit an incorrectly created todo.
 
+# Deployment note:
+
+    - It does not commit to database and media . These must be created by you.
+
+        + For the media folder: -> cd appback -> mkdir media
+
+        + For database (mongo db ) -> mongo shell -> " use database1" -> db.createCollection("database1")
+
+            +For create different database: appback ->Model ->Todo.js ->mongoose.connect(<host>/<new db Name>)
+
 # For Future Versions
 
 - For future versions: user creation and user operations.
