@@ -65,15 +65,9 @@ export default {
     },
 
     findrangedatetodo() {
-      let temparray = new Array();
-      let rangearray = this.$refs.findercomp.findrangedateTodo();
-      for (let item in this.dataList) {
-        if (rangearray[item] == item) {
-          temparray.push(this.dataList[item]);
-        }
-      }
-      this.orther = temparray;
-      //console.log(temparray);
+      let rangearray = this.$refs.findercomp.findrangedateTodos();
+
+      this.orther = rangearray;
     },
 
     findactive() {

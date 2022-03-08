@@ -35,7 +35,7 @@ export default {
       }
     },
 
-    findrangedateTodo() {
+    findrangedateTodos() {
       let lastdate = new Date(this.lastdate);
       let firstdate = new Date(this.firstdate);
       let tempdaterange = [];
@@ -43,16 +43,21 @@ export default {
       for (let item in this.alltodo) {
         let tododate = this.alltodo[item]["lastdate"];
         tododate = new Date(tododate);
-        console.log(tododate > firstdate);
-        console.log(tododate < lastdate);
+        // console.log(tododate > firstdate);
+        // console.log(tododate < lastdate);
+
+        // console.log(typeof tododate);
+        // console.log(typeof firstdate);
+        // console.log(typeof lastdate);
         //console.log(tododate);
         if (tododate >= firstdate && tododate <= lastdate) {
-          console.log(item);
-          tempdaterange.push(item);
+          //console.log(item);
+          // console.log(this.alltodo[item]);
+          tempdaterange.push(this.alltodo[item]);
         }
       }
 
-      console.log(typeof tempdaterange);
+      console.log(tempdaterange);
       return tempdaterange;
     },
   },

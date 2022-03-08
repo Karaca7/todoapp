@@ -120,8 +120,8 @@ export default {
   watch: {
     ortherdata(newdata, olddata) {
       // console.log(newdata, olddata);
-      console.log(newdata.length);
-      console.log(typeof newdata);
+      // console.log(newdata.length);
+      // console.log(typeof newdata);
 
       if (newdata.length == undefined) {
         console.log("buraa2");
