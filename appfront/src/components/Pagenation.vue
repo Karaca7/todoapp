@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container">
     <h1>pagenation</h1>
     <!-- page item -->
 
