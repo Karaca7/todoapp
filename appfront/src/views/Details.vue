@@ -86,7 +86,7 @@ export default {
         // console.log(tdatestr > ndatestr);
         // console.log(ndatestr);
 
-        if (ndatestr >= tdatestr) {
+        if (tdatestr >= ndatestr) {
           this.verificationMessage2 = null;
           if (this.$refs.detailform.tempimg != null) {
             if (
