@@ -1,10 +1,10 @@
 <template>
   <div>
-    <input type="text" v-model="inputexttodo" />
+    <label for="">Todo Name</label> <input type="text" v-model="inputexttodo" />
 
-    <label for="">Başlangıç tarii</label>
+    <label for="">First Date</label>
     <input type="date" v-model="firstdate" />
-    <label for="">Bitiş tarihi</label> <input type="date" v-model="lastdate" />
+    <label for="">Last Date</label> <input type="date" v-model="lastdate" />
   </div>
 </template>
 
@@ -74,5 +74,14 @@ li {
 }
 a {
   color: #42b983;
+}
+input {
+  border: none; /* <-- This thing here */
+  border: solid 1px #ccc;
+  border-radius: 10px;
+}
+input:hover {
+  color: #444645;
+  background: #ddd;
 }
 </style>

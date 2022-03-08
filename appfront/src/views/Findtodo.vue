@@ -1,11 +1,17 @@
 <template>
   <div>
-    <h1>Findtodolist</h1>
+    <img class="rotate" alt="tasarımım" src="../assets/image2.png" />
+
+    <h1>Find Todo List</h1>
     <findtodoform :alltodo="dataList" ref="findercomp" />
-    <button @click="findtodo">Ara</button
-    ><button @click="lodertodo">Geri</button>
-    <button @click="findrangedatetodo">tarih ara</button>
-    <br />
+    <div class="finderbuttons">
+      <button @click="findtodo">Find Todo</button>
+      <button @click="findrangedatetodo">Find Date</button>
+      <button @click="findactive">Find Active</button>
+      <button @click="findcomplete">Find Complete</button>
+      <button @click="lodertodo">Back</button>
+    </div>
+
     <pagenation-2
       :datas="dataList"
       ref="pagen2"
@@ -70,6 +76,26 @@ export default {
       //console.log(temparray);
     },
 
+    findactive() {
+      let temparray = [];
+      for (let item in this.dataList) {
+        if (false == this.dataList[item]["isDone"]) {
+          temparray.push(this.dataList[item]);
+        }
+      }
+      this.orther = temparray;
+    },
+
+    findcomplete() {
+      let temparray = [];
+      for (let item in this.dataList) {
+        if (true == this.dataList[item]["isDone"]) {
+          temparray.push(this.dataList[item]);
+        }
+      }
+      this.orther = temparray;
+    },
+
     async lodertodo() {
       await this.getalltodo();
       await this.$refs.pagen2.createPages();
@@ -83,3 +109,53 @@ export default {
   components: { findtodoform: FindtodoForm, pagenation2: Pagenation2 },
 };
 </script>
+
+<style scoped>
+img {
+  width: 20%;
+  border-radius: 100%;
+}
+
+.rotate {
+  animation: rotation 10s;
+  animation-iteration-count: 2;
+  /* animation-iteration-count: infinite; */
+  animation-delay: 10;
+}
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+
+button {
+  background-color: rgb(255, 39, 104);
+  border: solid 1px #ccc;
+  border-radius: 10px;
+  height: 25px;
+  width: 10%;
+  color: beige;
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: bold;
+}
+button:hover {
+  color: white;
+  background: #444645;
+}
+button > a {
+  text-decoration: none;
+  color: white;
+}
+.finderbuttons {
+  margin-top: 1%;
+}
+
+.pinker {
+  color: rgb(255, 39, 104);
+}
+</style>

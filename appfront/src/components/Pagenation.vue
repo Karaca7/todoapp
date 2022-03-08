@@ -1,21 +1,24 @@
 <template>
   <div class="container">
-    <h1>pagenation</h1>
     <!-- page item -->
-
+    <hr />
     <!--  -->
     <ul v-for="todo in nowpagelist" :key="todo">
       <li :ref="todo._id">
         <div class="wrapimg">
           <span v-if="todo.todoimg"><img v-bind:src="todo.todoimg" /></span>
-          <span v-else> No image ||</span>
+          <span v-else> <span class="blacker">No image ||</span></span>
         </div>
         <div class="wrapcontents">
           <div>
-            Görev: {{ todo.tododata }}|| Önem: {{ todo.weight }} | Kategori:{{
-              todo.todotype
-            }}
-            || Son Gün:{{ dateconvert(todo.lastdate) }} ||
+            <span class="pinker">Görev:</span> {{ todo.tododata }} |
+            <span class="pinker"> Önem:</span> {{ todo.weight }} |
+            <span class="pinker">Kategori:</span>{{ todo.todotype }} ||<span
+              class="pinker"
+            >
+              Last Day:</span
+            >{{ dateconvert(todo.lastdate) }}
+            |
           </div>
           <div class="wrapbuttons">
             <span v-if="mode !== true">
@@ -28,8 +31,8 @@
               <button @click="tododone(todo._id)">Tamam</button>
             </span>
             <span v-if="mode === true">
-              <p v-if="todo.isDone">Aktif Görev</p>
-              <p v-else>Tamamlanmış Görev</p>
+              <p v-if="todo.isDone">Mission complete :)</p>
+              <p v-else>Active Todo</p>
             </span>
           </div>
         </div>
@@ -118,10 +121,15 @@ export default {
     ortherdata(newdata, olddata) {
       // console.log(newdata, olddata);
       console.log(newdata.length);
+      console.log(typeof newdata);
 
       if (newdata.length == undefined) {
         console.log("buraa2");
         this.nowpagelist = [newdata];
+      }
+
+      if (newdata.length == 1) {
+        this.nowpagelist = newdata;
       }
       if (newdata.length > 1) {
         console.log("buraa");
@@ -198,5 +206,14 @@ button > a {
 .wrapbuttons {
   margin-top: 5px;
   margin-bottom: 5px;
+}
+
+.pinker {
+  color: rgb(255, 39, 104);
+  font-weight: bold;
+}
+.blacker {
+  color: #444645;
+  font-weight: bold;
 }
 </style>

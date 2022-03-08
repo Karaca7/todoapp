@@ -1,10 +1,7 @@
 <template>
   <div class="about">
-    <h1>Todo list page</h1>
-
-    <br />
-
-    <br />
+    <img class="rotate2" src="../assets/image1.png" />
+    <h1>Todo List Page</h1>
 
     <pagenation-1 :datas="dataList" ref="pagen" />
   </div>
@@ -56,3 +53,24 @@ export default {
   components: { Pagenation1: Pagenation },
 };
 </script>
+<style scoped>
+img {
+  width: 20%;
+  border-radius: 100%;
+}
+
+.rotate2 {
+  animation: rotation 10s;
+  animation-iteration-count: 2;
+  /* animation-iteration-count: infinite; */
+  animation-delay: 10;
+}
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+</style>

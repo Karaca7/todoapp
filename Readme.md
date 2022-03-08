@@ -55,7 +55,7 @@ for frontend:
 
 ## Note
 
-If you run two apps(appback/appfront) on the same server. If enev is used between ports, you may experience connection problems if your port is closed. You have to choose different servers for this. If you use process.env.PORT you will have communication problems between api.
+If you from deployment run two apps(appback/appfront) on the same server. If enev is used between ports, you may experience connection problems if your port is closed. You have to choose different servers for this. If you use process.env.PORT you will have communication problems between api.
 
 ### Customize configuration
 

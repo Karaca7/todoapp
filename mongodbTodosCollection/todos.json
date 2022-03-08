@@ -1,0 +1,129 @@
+[{
+  "_id": {
+    "$oid": "6225c89f0463db4e9ad7de03"
+  },
+  "tododata": "xcvxcgv",
+  "weight": 1,
+  "todotype": "1",
+  "nowdate": {
+    "$date": "2022-03-07T08:55:59Z"
+  },
+  "lastdate": {
+    "$date": "2022-03-08T00:00:00Z"
+  },
+  "todoimg": "http://localhost:5500/media/1646643359780--family.jpg",
+  "isDone": true,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6225e55917b2f9d4c12a0fa1"
+  },
+  "tododata": "deneme1",
+  "weight": 1,
+  "todotype": "Aile",
+  "nowdate": {
+    "$date": "2022-03-07T10:58:33Z"
+  },
+  "lastdate": {
+    "$date": "2022-03-07T00:00:00Z"
+  },
+  "isDone": false,
+  "__v": 0,
+  "todoimg": "http://localhost:5500/media/1646650713164--family.jpg"
+},{
+  "_id": {
+    "$oid": "6225e58317b2f9d4c12a0fa5"
+  },
+  "tododata": "deneme2 bu düzenlendi",
+  "weight": 3,
+  "todotype": "Aile",
+  "nowdate": {
+    "$date": "2022-03-07T15:42:48Z"
+  },
+  "lastdate": {
+    "$date": "2022-03-07T00:00:00Z"
+  },
+  "isDone": false,
+  "__v": 0,
+  "todoimg": "http://localhost:5500/media/1646667768346--family.jpg"
+},{
+  "_id": {
+    "$oid": "6225e5f617b2f9d4c12a0fba"
+  },
+  "tododata": "deneme5",
+  "weight": 1,
+  "todotype": "Okul",
+  "nowdate": {
+    "$date": "2022-03-07T11:01:10Z"
+  },
+  "lastdate": {
+    "$date": "2022-03-07T00:00:00Z"
+  },
+  "isDone": false,
+  "__v": 0,
+  "todoimg": "http://localhost:5500/media/1646650870840--iron.png"
+},{
+  "_id": {
+    "$oid": "6225e60b17b2f9d4c12a0fbd"
+  },
+  "tododata": "deneme6",
+  "weight": 1,
+  "todotype": "Okul",
+  "nowdate": {
+    "$date": "2022-03-07T15:38:58Z"
+  },
+  "lastdate": {
+    "$date": "2022-03-07T00:00:00Z"
+  },
+  "isDone": false,
+  "__v": 0,
+  "todoimg": "http://localhost:5500/media/1646650891084--as.png"
+},{
+  "_id": {
+    "$oid": "62262822a7e56ba5e568c566"
+  },
+  "tododata": "deneme3düzenlendi",
+  "weight": 3,
+  "todotype": "İş",
+  "nowdate": {
+    "$date": "2022-03-07T15:44:09Z"
+  },
+  "lastdate": {
+    "$date": "2022-03-07T00:00:00Z"
+  },
+  "isDone": false,
+  "__v": 0,
+  "todoimg": "http://localhost:5500/media/1646667849350--family.jpg"
+},{
+  "_id": {
+    "$oid": "62262868a7e56ba5e568c573"
+  },
+  "tododata": "deneme4",
+  "weight": 1,
+  "todotype": "İş",
+  "nowdate": {
+    "$date": "2022-03-07T15:44:40Z"
+  },
+  "lastdate": {
+    "$date": "2022-03-14T00:00:00Z"
+  },
+  "isDone": false,
+  "__v": 0,
+  "todoimg": "http://localhost:5500/media/1646667880157--family.jpg"
+},{
+  "_id": {
+    "$oid": "6226288ba7e56ba5e568c576"
+  },
+  "tododata": "deneme7",
+  "weight": 1,
+  "todotype": "Kişisel Gelişim",
+  "nowdate": {
+    "$date": "2022-03-07T15:45:15Z"
+  },
+  "lastdate": {
+    "$date": "2022-03-07T00:00:00Z"
+  },
+  "isDone": false,
+  "__v": 0,
+  "todoimg": null
+}]
