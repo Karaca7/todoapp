@@ -6,23 +6,33 @@
     <!--  -->
     <ul v-for="todo in nowpagelist" :key="todo">
       <li :ref="todo._id">
-        <span v-if="todo.todoimg"><img v-bind:src="todo.todoimg" /></span>
-        <span v-else> No image ||</span>
-
-        Görev: {{ todo.tododata }}|| Önem: {{ todo.weight }} | Kategori:{{
-          todo.todotype
-        }}
-        || Son Gün:{{ dateconvert(todo.lastdate) }} ||
-
-        <span v-if="mode !== true">
-          <button @click="todoremove(todo._id)">Sil</button>
-          <button><a :href="'#/details/' + todo._id">Düzenle</a></button>
-          <button @click="tododone(todo._id)">Tamam</button>
-        </span>
-        <span v-if="mode === true">
-          <p v-if="todo.isDone">Aktif Görev</p>
-          <p v-else>Tamamlanmış Görev</p>
-        </span>
+        <div class="wrapimg">
+          <span v-if="todo.todoimg"><img v-bind:src="todo.todoimg" /></span>
+          <span v-else> No image ||</span>
+        </div>
+        <div class="wrapcontents">
+          <div>
+            Görev: {{ todo.tododata }}|| Önem: {{ todo.weight }} | Kategori:{{
+              todo.todotype
+            }}
+            || Son Gün:{{ dateconvert(todo.lastdate) }} ||
+          </div>
+          <div class="wrapbuttons">
+            <span v-if="mode !== true">
+              <button @click="todoremove(todo._id)">Sil</button>
+              <button>
+                <a :href="'#/details/' + todo._id" style="color: white"
+                  >Düzenle</a
+                >
+              </button>
+              <button @click="tododone(todo._id)">Tamam</button>
+            </span>
+            <span v-if="mode === true">
+              <p v-if="todo.isDone">Aktif Görev</p>
+              <p v-else>Tamamlanmış Görev</p>
+            </span>
+          </div>
+        </div>
       </li>
     </ul>
 
@@ -136,13 +146,57 @@ ul {
 li {
   display: inline-block;
   margin: 0 10px;
+  color: #444645;
+  background: rgb(238, 236, 236);
+  border-radius: 100px;
+  width: 100%;
 }
 a {
-  color: #42b983;
+  color: white;
 }
 img {
-  width: 10%;
-  height: 10%;
+  height: 7vh;
+  margin-top: 2%;
+  display: inline;
+
   border-radius: 100%;
+}
+.container {
+  width: 50%;
+  margin: auto;
+}
+
+button {
+  background-color: rgb(255, 39, 104);
+  border: solid 1px #ccc;
+  border-radius: 10px;
+  height: 25px;
+  width: 10%;
+  color: beige;
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: bold;
+}
+button:hover {
+  color: white;
+  background: #444645;
+}
+button > a {
+  text-decoration: none;
+  color: white;
+}
+
+.wrapimg {
+  margin-left: 0px;
+  margin-top: 5px;
+  /* display: inline; */
+
+  width: 20%;
+}
+
+.wrapbuttons {
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 </style>

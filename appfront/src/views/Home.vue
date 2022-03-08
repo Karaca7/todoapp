@@ -24,9 +24,9 @@ img {
 
 .rotate {
   animation: rotation 10s;
-  animation-iteration-count: 3;
+  animation-iteration-count: 2;
   /* animation-iteration-count: infinite; */
-  animation-delay: 5;
+  animation-delay: 10;
 }
 @keyframes rotation {
   from {
