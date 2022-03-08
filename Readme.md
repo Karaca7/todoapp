@@ -9,8 +9,9 @@ edit: you can re-edit an incorrectly created todo.
 
 # For Future Versions
 
-for future versions: user creation and user operations.
-better validation processes
+- For future versions: user creation and user operations.
+- Fixed better validation processes.
+- Css.
 
 ## Project setup
 
@@ -37,7 +38,7 @@ for frontend:
 ### Compiles and minifies for production
 
 ```
-fro frontend:
+for frontend:
     cd appfront
     npm run build
 ```
@@ -47,6 +48,10 @@ fro frontend:
 ```
 npm run lint
 ```
+
+## Note
+
+If you run two apps(appback/appfront) on the same server. If enev is used between ports, you may experience connection problems if your port is closed. You have to choose different servers for this. If you use process.env.PORT you will have communication problems between api.
 
 ### Customize configuration
 

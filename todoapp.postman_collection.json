@@ -1,0 +1,168 @@
+{
+	"info": {
+		"_postman_id": "e6c08f7a-6526-452c-b18a-b4d0808508cc",
+		"name": "todoapp",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "getalltodo",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5500/getalltodo/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5500",
+					"path": [
+						"getalltodo",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "todo add",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "tododata",
+							"value": "deneebu 16",
+							"type": "text"
+						},
+						{
+							"key": "weight",
+							"value": "2",
+							"type": "text"
+						},
+						{
+							"key": "todotype",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "nowdate",
+							"value": "123124124124",
+							"type": "text"
+						},
+						{
+							"key": "lastdate",
+							"value": "1234121212512",
+							"type": "text"
+						},
+						{
+							"key": "isdone",
+							"value": "false",
+							"type": "text"
+						},
+						{
+							"key": "media",
+							"type": "file",
+							"src": "/C:/Users/Karaca/Desktop/iron.png"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:5500/addtodos/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5500",
+					"path": [
+						"addtodos",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "removetodo",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5500/removetodo/62225bf7afd6ba99d77d175a",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5500",
+					"path": [
+						"removetodo",
+						"62225bf7afd6ba99d77d175a"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "donetodo",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5500/donetodo/622374dbc06d226120aae05a",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5500",
+					"path": [
+						"donetodo",
+						"622374dbc06d226120aae05a"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "isdone",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5500/isdonetodo",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5500",
+					"path": [
+						"isdonetodo"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "gettodo",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5500/gettodo/6225e58317b2f9d4c12a0fa5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5500",
+					"path": [
+						"gettodo",
+						"6225e58317b2f9d4c12a0fa5"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
