@@ -34,7 +34,7 @@ cd appfront
 npm install
 ```
 
-### Compiles and hot-reloads for development
+### Run
 
 ```
 for backend :
@@ -51,12 +51,6 @@ for frontend:
 for frontend:
     cd appfront
     npm run build
-```
-
-### Lints and fixes files
-
-```
-npm run lint
 ```
 
 ## Note
