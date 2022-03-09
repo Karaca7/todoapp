@@ -118,4 +118,10 @@ button > a {
 .pinker {
   color: rgb(255, 39, 104);
 }
+
+@media only screen and (max-width: 450px) {
+  button {
+    width: 100%;
+  }
+}
 </style>

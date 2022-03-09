@@ -265,4 +265,33 @@ button:hover {
 .wraper {
   background-color: bisque;
 } */
+
+@media only screen and (max-width: 450px) {
+  .inputs {
+    width: 100%;
+  }
+  input {
+    width: 100%;
+  }
+  select {
+    width: 100%;
+  }
+  label {
+    width: 100;
+  }
+  .wraper {
+    width: 100%;
+  }
+  .wrapinputs {
+    width: 100%;
+  }
+  .wrapinputs > label {
+    width: 100%;
+    display: block;
+  }
+
+  button {
+    width: 100%;
+  }
+}
 </style>

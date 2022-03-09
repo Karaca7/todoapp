@@ -164,4 +164,16 @@ input:hover {
   color: #444645;
   background: #ddd;
 }
+@media only screen and (max-width: 450px) {
+  button {
+    width: 100%;
+  }
+  input {
+    width: 100%;
+  }
+  label {
+    width: 100%;
+    display: block;
+  }
+}
 </style>

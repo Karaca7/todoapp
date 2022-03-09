@@ -205,4 +205,19 @@ button > a {
   color: #444645;
   font-weight: bold;
 }
+
+@media only screen and (max-width: 450px) {
+  .wrapimg {
+    width: 100%;
+  }
+  .container {
+    width: 100%;
+  }
+  button {
+    width: 20%;
+  }
+  li {
+    width: 100%;
+  }
+}
 </style>
