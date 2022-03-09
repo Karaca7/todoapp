@@ -3,7 +3,7 @@
 As the name suggests, Todo app is a task app.
 It has the features of creating, searching, deleting, completing, editing your To dollars.
 creation: you can create new todos with or without pictures.
-search features: search by name and search by date are available.
+search features: search by name and search by date are available. // If a date search is desired, it must be filled in completely.
 delete: you can delete a todo that you have completed.
 edit: you can re-edit an incorrectly created todo.
 
@@ -70,3 +70,7 @@ If you from deployment run two apps(appback/appfront) on the same server. If ene
 ### Customize configuration
 
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+<img src="./app images/Add Todo view.png">
+<img src="./app images/Find Todo view.png">
+<img src="./app images/List Todo view.png">
