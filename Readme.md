@@ -52,7 +52,7 @@ for backend :
     npm run dev
 for frontend:
     cd appfront
-    npm run serve
+    npm run serve  //note may not run on first run (for macbook)
 ```
 
 ### Compiles and minifies for production
