@@ -5,11 +5,8 @@
     <h1>Find Todo List</h1>
     <findtodoform :alltodo="dataList" ref="findercomp" />
     <div class="finderbuttons">
-      <button @click="findtodo">Find Todo</button>
-      <button @click="findrangedatetodo">Find Date</button>
-      <button @click="findactive">Find Active</button>
-      <button @click="findcomplete">Find Complete</button>
-      <button @click="lodertodo">Back</button>
+      <button @click="gettodo">Find</button>
+      <button @click="lodertodo">Clear</button>
     </div>
 
     <pagenation-2
@@ -52,41 +49,10 @@ export default {
       return temptodolist;
     },
 
-    findtodo() {
-      //console.log(this.$refs.findercomp.finderTodo());
-      let item = this.$refs.findercomp.finderTodo();
+    gettodo() {
+      let temparray = this.$refs.findercomp.findertodos(); // it is need handel ->  can take undifend data
 
-      if (item == undefined) {
-        this.orther = this.dataList;
-        console.log("ahandaaa");
-      } else {
-        this.orther = this.dataList[item];
-      }
-    },
-
-    findrangedatetodo() {
-      let rangearray = this.$refs.findercomp.findrangedateTodos();
-
-      this.orther = rangearray;
-    },
-
-    findactive() {
-      let temparray = [];
-      for (let item in this.dataList) {
-        if (false == this.dataList[item]["isDone"]) {
-          temparray.push(this.dataList[item]);
-        }
-      }
-      this.orther = temparray;
-    },
-
-    findcomplete() {
-      let temparray = [];
-      for (let item in this.dataList) {
-        if (true == this.dataList[item]["isDone"]) {
-          temparray.push(this.dataList[item]);
-        }
-      }
+      //console.log(temparray);
       this.orther = temparray;
     },
 

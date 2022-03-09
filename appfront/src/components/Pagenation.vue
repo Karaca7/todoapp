@@ -71,7 +71,6 @@ export default {
       pagesize: 0,
       nownuber: 0,
       sa: this.ortherdata,
-      //resulttempdata: null,
     };
   },
 
@@ -99,7 +98,6 @@ export default {
       }
     },
     getpage(number) {
-      // console.log(number);
       this.nownuber = number;
       this.nowpagelist = this.pagelsit[number - 1];
       this.pagesize = Math.floor(this.datas.length / 5) + 1;
@@ -110,7 +108,6 @@ export default {
 
       let dlist = this.datas;
       for (let number = 0; number <= Math.floor(dlist.length / 5); number++) {
-        // console.log(dlist.slice(range1, range2));
         this.pagelsit.push(dlist.slice(range1, range2));
         range1 = range2;
         range2 += 5;
@@ -119,12 +116,7 @@ export default {
   },
   watch: {
     ortherdata(newdata, olddata) {
-      // console.log(newdata, olddata);
-      // console.log(newdata.length);
-      // console.log(typeof newdata);
-
       if (newdata.length == undefined) {
-        console.log("buraa2");
         this.nowpagelist = [newdata];
       }
 
@@ -132,9 +124,6 @@ export default {
         this.nowpagelist = newdata;
       }
       if (newdata.length > 1) {
-        console.log("buraa");
-        console.log(newdata.length);
-
         this.nowpagelist = newdata;
       }
     },
